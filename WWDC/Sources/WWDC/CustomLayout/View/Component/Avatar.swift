@@ -9,12 +9,11 @@ import SwiftUI
 
 struct Avatar: View {
     @Binding var pet: Pet
-    @Binding var rankedColor: Color
 
     var body: some View {
         Circle()
             .frame(width: 80, height: 80)
-            .foregroundColor(rankedColor)
+            .foregroundColor(pet.color)
             .shadow(radius: 3)
             .overlay {
                 Text(pet.type.prefix(1).capitalized)
@@ -28,9 +27,6 @@ struct Avatar: View {
     Avatar(
         pet: .constant(
             pet
-        ),
-        rankedColor: .constant(
-            pet.rankedColor(allPets: Pet.exampleData)
         )
     )
 }

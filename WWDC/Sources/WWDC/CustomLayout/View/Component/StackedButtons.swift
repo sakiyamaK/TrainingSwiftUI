@@ -24,6 +24,20 @@ struct StackedButtons: View {
             }
         }
     }
+
+    private func Buttons(pets: Binding<[Pet]>) -> some View {
+        ForEach($pets) { $pet in
+            Button {
+                withAnimation {
+                    pet.votes += 1
+                }
+            } label: {
+                Text(pet.type)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+        }
+    }
 }
 
 

@@ -97,9 +97,9 @@ struct HomeView: View {
 
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 16) {
-                                    ForEach($events) { event in
+                                    ForEach($events) { $event in
                                         Button {
-                                            print(event.wrappedValue.title)
+                                            print(event.title)
                                         } label: {
                                             WorkCardView(
                                                 work: .init(
