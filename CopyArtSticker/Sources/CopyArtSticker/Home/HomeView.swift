@@ -50,9 +50,6 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .foregroundStyle(.link)
-//            Text("詳細はこちら")
-//                .frame(maxWidth: .infinity, alignment: .trailing)
-//                .foregroundStyle(.link)
         }
     }
     

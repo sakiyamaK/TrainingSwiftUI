@@ -22,7 +22,7 @@ extension LayoutSubviews {
             $0.sizeThatFits(.unspecified)
         }.reduce(.zero) { currentMax, subviewSize in
             /*
-             最大の幅を高さを求める
+             最大の幅と高さを求める
              reduceだけど統計量を出すわけではない
              */
             CGSize(

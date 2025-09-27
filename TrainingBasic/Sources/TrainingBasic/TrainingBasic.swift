@@ -1,87 +1,89 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
-
 import SwiftUI
 
-struct TrainingBasicView: View {
+@MainActor
+class DataManager {
 
-    @State private var currentPage = 0
+    static let shared = DataManager()
 
-    var body: some View {
-        VStack {
-            TabView(selection: $currentPage) {
-                ForEach(0..<5) { index in
-                    VStack(alignment: .leading) {
-                        AsyncImage(url: URL(string: "https://picsum.photos/300/300")){ image in
-                            image
-                                .resizable()
-                                .aspectRatio(16/9, contentMode: .fit)
-                        } placeholder: {
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.3))
-                                .aspectRatio(16/9, contentMode: .fit)
-                        }
-                        .background(Color.gray)
+    // AppStorage（UserDefaults）に保存された下書きを確認する関数
+    func checkAppStorageDraft(for itemID: Int) {
+        let key = "appMessage_\(itemID)"
+        let appDraft = AppStorage(wrappedValue: "", key)
+        print("✅ [DataManager]: AppStorageのデータを発見！ -> '\(appDraft.wrappedValue)'")
+    }
 
-                        Text("タイトルでーす")
-                    }
-                    .background(Color.blue)
-                    .frame(maxWidth: .infinity)
-                    .tag(index)
-                }
-            }
-//            .tabViewStyle(.page(indexDisplayMode: .never))
-            .tabViewStyle(.page)
-
-            Spacer()
-        }
+    // SceneStorageのデータを確認しようとするが、アクセス手段がないことを示す
+    func checkSceneStorageDraft(for itemID: Int) {
+        let key = "sceneMessage_\(itemID)"
+        let sceneDraft = SceneStorage(wrappedValue: "", key)
+        print("✅ [DataManager]: SceneStorageのデータを発見！ -> '\(sceneDraft.wrappedValue)'")
     }
 }
 
+// ----- ここから下はSwiftUIのView -----
 
-#Preview {
-    TrainingBasicView()
+public struct TrainingBasic: View {
+    private let items: [Item] = (1...20).map { Item(id: $0, name: "アイテム \($0)") }
+
+    public init() { }
+
+    public var body: some View {
+        NavigationStack {
+            List(items) { item in
+                NavigationLink(item.name, value: item)
+            }
+            .navigationTitle("リスト")
+            .navigationDestination(for: Item.self) { item in
+                DetailView(item: item)
+            }
+        }
 }
 
+struct DetailView: View {
+    let item: Item
 
-//        VStack {
-//            VStack(alignment: .leading, spacing: 8) {
-//                Image(systemName: "square.and.arrow.up")
-//                    .resizable()
-//                    .aspectRatio(16/9, contentMode: .fill)
-//                    .background(Color.gray.opacity(0.1))
-//
-//                Text("event.title")
-//                    .font(.headline)
-//                    .padding(.horizontal)
-//            }
-//            TabView(selection: $currentPage) {
-//                VStack(alignment: .leading, spacing: 8) {
-//                    Image(systemName: "square.and.arrow.up")
-//                        .resizable()
-//                        .aspectRatio(16/9, contentMode: .fill)
-//                        .background(Color.gray.opacity(0.1))
-//
-//                    Text("event.title")
-//                        .font(.headline)
-//                        .padding(.horizontal)
-//                }
-//                .tag(0)
-//                ForEach(0..<3) { index in
-//                    VStack(alignment: .leading, spacing: 8) {
-//                        Image(systemName: "square.and.arrow.up")
-//                            .resizable()
-//                            .aspectRatio(16/9, contentMode: .fill)
-//                            .background(Color.gray.opacity(0.1))
-//
-//                        Text("event.title")
-//                            .font(.headline)
-//                            .padding(.horizontal)
-//                    }
-//                    .tag(index)
-//                }
-//            }
-//            .tabViewStyle(.page(indexDisplayMode: .never))
-//            .background(Color.purple)
-//            Spacer()
-//        }
+    @SceneStorage private var sceneDraft: String
+    @AppStorage private var appDraft: String
+
+    init(item: Item) {
+        self.item = item
+        // 両方とも、item.idを使って動的なキーで初期化する
+        self._sceneDraft = SceneStorage(wrappedValue: "", "sceneMessage_\(item.id)")
+        self._appDraft = AppStorage(wrappedValue: "", "appMessage_\(item.id)")
+    }
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("\(item.name) の詳細").font(.largeTitle)
+
+            VStack(alignment: .leading) {
+                Text("AppStorage (UserDefaults)").font(.headline)
+                TextEditor(text: $appDraft).border(Color.blue, width: 2)
+            }
+
+            VStack(alignment: .leading) {
+                Text("SceneStorage").font(.headline)
+                TextEditor(text: $sceneDraft).border(Color.green, width: 2)
+            }
+
+            // データを確認するためのボタン
+            Button("外部のクラスからデータを確認する") {
+                print("\n--- 確認ボタンが押されました ---")
+                DataManager.shared.checkAppStorageDraft(for: item.id)
+                DataManager.shared.checkSceneStorageDraft(for: item.id)
+            }
+            .padding()
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(10)
+
+            Spacer()
+        }
+        .padding()
+        .navigationTitle(item.name)
+    }
+}
+
+struct Item: Identifiable, Hashable {
+    let id: Int
+    let name: String
+}

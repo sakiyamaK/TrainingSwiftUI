@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B637294B2E83B78E00D6F485 /* TrainingNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = B637294A2E83B78E00D6F485 /* TrainingNavigation */; };
+		B6444AFD2E84FB6800AFF705 /* CopyArtSticker in Frameworks */ = {isa = PBXBuildFile; productRef = B6444AFC2E84FB6800AFF705 /* CopyArtSticker */; };
+		B6444AFF2E84FB6800AFF705 /* TrainingBasic in Frameworks */ = {isa = PBXBuildFile; productRef = B6444AFE2E84FB6800AFF705 /* TrainingBasic */; };
+		B6444B012E84FB6800AFF705 /* WWDC in Frameworks */ = {isa = PBXBuildFile; productRef = B6444B002E84FB6800AFF705 /* WWDC */; };
 		B6E4BC622E3EFFFF00FE5424 /* TrainingButton in Frameworks */ = {isa = PBXBuildFile; productRef = B6E4BC612E3EFFFF00FE5424 /* TrainingButton */; };
 		B6E4BC652E3F00C600FE5424 /* Util in Frameworks */ = {isa = PBXBuildFile; productRef = B6E4BC642E3F00C600FE5424 /* Util */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B61744462E366E300036DF72 /* TrainingSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainingSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B637294C2E83B7A800D6F485 /* TrainingNavigation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingNavigation; sourceTree = "<group>"; };
 		B690D4392E76E026003C9FCD /* TrainingButton */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingButton; sourceTree = "<group>"; };
 		B690D43A2E76E026003C9FCD /* Util */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Util; sourceTree = "<group>"; };
 		B690D46B2E76EC0E003C9FCD /* TrainingBasic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingBasic; sourceTree = "<group>"; };
@@ -33,8 +38,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B637294B2E83B78E00D6F485 /* TrainingNavigation in Frameworks */,
+				B6444B012E84FB6800AFF705 /* WWDC in Frameworks */,
+				B6444AFD2E84FB6800AFF705 /* CopyArtSticker in Frameworks */,
 				B6E4BC652E3F00C600FE5424 /* Util in Frameworks */,
 				B6E4BC622E3EFFFF00FE5424 /* TrainingButton in Frameworks */,
+				B6444AFF2E84FB6800AFF705 /* TrainingBasic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,12 +53,14 @@
 		B617443D2E366E300036DF72 = {
 			isa = PBXGroup;
 			children = (
+				B637294C2E83B7A800D6F485 /* TrainingNavigation */,
 				B6D4F5B72E7F4F5C00071ACF /* WWDC */,
 				B690D46C2E77D3E5003C9FCD /* CopyArtSticker */,
 				B690D46B2E76EC0E003C9FCD /* TrainingBasic */,
 				B690D4392E76E026003C9FCD /* TrainingButton */,
 				B690D43A2E76E026003C9FCD /* Util */,
 				B61744482E366E300036DF72 /* TrainingSwiftUI */,
+				B6444AFB2E84FB6800AFF705 /* Frameworks */,
 				B61744472E366E300036DF72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +71,13 @@
 				B61744462E366E300036DF72 /* TrainingSwiftUI.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B6444AFB2E84FB6800AFF705 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +102,10 @@
 			packageProductDependencies = (
 				B6E4BC612E3EFFFF00FE5424 /* TrainingButton */,
 				B6E4BC642E3F00C600FE5424 /* Util */,
+				B637294A2E83B78E00D6F485 /* TrainingNavigation */,
+				B6444AFC2E84FB6800AFF705 /* CopyArtSticker */,
+				B6444AFE2E84FB6800AFF705 /* TrainingBasic */,
+				B6444B002E84FB6800AFF705 /* WWDC */,
 			);
 			productName = TrainingSwiftUI;
 			productReference = B61744462E366E300036DF72 /* TrainingSwiftUI.app */;
@@ -358,6 +380,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B637294A2E83B78E00D6F485 /* TrainingNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TrainingNavigation;
+		};
+		B6444AFC2E84FB6800AFF705 /* CopyArtSticker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CopyArtSticker;
+		};
+		B6444AFE2E84FB6800AFF705 /* TrainingBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TrainingBasic;
+		};
+		B6444B002E84FB6800AFF705 /* WWDC */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WWDC;
+		};
 		B6E4BC612E3EFFFF00FE5424 /* TrainingButton */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TrainingButton;

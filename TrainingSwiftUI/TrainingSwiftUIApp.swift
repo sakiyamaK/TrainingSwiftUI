@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import TrainingBasic
 
 @main
 struct TrainingSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TrainingBasic()
         }
     }
 }
