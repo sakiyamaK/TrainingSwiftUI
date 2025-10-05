@@ -29,9 +29,12 @@ struct MyEqualWidthHStack: Layout {
     ) -> CGSize {
         if !subviews.isEmpty {
             let maxSize = subviews.maxSize
-            return CGSize(
+            let size = CGSize(
                 width: maxSize.width * CGFloat(subviews.count) + subviews.spacings(along: .horizontal).reduce(.zero, +),
                 height: maxSize.height)
+            print("sizeThatFits")
+            print(size)
+            return size
         } else {
             return .zero
         }
@@ -61,6 +64,10 @@ struct MyEqualWidthHStack: Layout {
     ) {
         guard !subviews.isEmpty else { return }
 
+        print("placeSubviews")
+        print(bounds)
+        print(proposal)
+
         /*
          suviews[0]の初期値
 
@@ -81,12 +88,13 @@ struct MyEqualWidthHStack: Layout {
                 anchor: .center,
                 proposal: subviews.maxSize.proposedViewSize
             )
+
             x += subviews.maxSize.width + subviews.spacings(along: .horizontal)[index]
         }
     }
 }
 
-#Preview {
+#Preview(traits: .fixedLayout(width: 300, height: 100)) {
     MyEqualWidthHStack {
         Buttons(pets: .constant(Pet.exampleData))
     }

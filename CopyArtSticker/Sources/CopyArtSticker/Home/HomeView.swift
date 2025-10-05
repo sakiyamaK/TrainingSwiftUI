@@ -1,5 +1,16 @@
 import SwiftUI
 
+struct Hoge {
+
+    var text = "Hello, World!"
+    var number: Int = 1
+    var isOn: Bool = false
+
+    var number2: Int {
+        return number * 1
+    }
+}
+
 struct HomeView: View {
 
     @Binding var events: [Event]
@@ -52,104 +63,104 @@ struct HomeView: View {
             .foregroundStyle(.link)
         }
     }
-    
+
     var body: some View {
         HomeNavigationView(isToolbarHidden: $isToolbarHidden) {
-            VStack(spacing: 0) {
-                HomeSearchbarView(searchText: $searchText)
-                    .padding()
-
-                ScrollView(.vertical, showsIndicators: false) {
-
-                    ToolbarHiddenCheckView()
-
-                    LazyVStack(alignment: .leading, spacing: 24) {
-
-                        HeaderCarouselView(events: $events)
-
-                        Group {
-                            SectionHeader(title: "注目のアートイベント", tap: {
-                                print("やじるじタップ！")
-                            })
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LazyHStack(spacing: 16) {
-                                    ForEach($events) { event in
-                                        Button {
-                                            print(event.title)
-                                        } label: {
-                                            EventCardView(event: event)
-                                        }
-                                        .foregroundStyle(.primary)
-                                    }
-                                }
-                                .padding()
-                            }
-                        }
-
-                        Group {
-                            SectionHeader(title: "あなたにおすすめの作品", tap: {
-                                print("やじるじタップ！")
-                            })
-
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LazyHStack(spacing: 16) {
-                                    ForEach($events) { $event in
-                                        Button {
-                                            print(event.title)
-                                        } label: {
-                                            WorkCardView(
-                                                work: .init(
-                                                    title: "Life is Beautiful",
-                                                    artistName: "須田 日菜子",
-                                                    price: "¥88,000",
-                                                    eventTitle: "須田日菜子「からだと構図」",
-                                                    badgeText: "限定販売",
-                                                    imageURLStr: "https://picsum.photos/600/400",
-                                                    isBookmarked: false
-                                                ),
-                                                onToggleBookmark: {}
-                                            )
-                                        }
-                                        .foregroundStyle(.primary)
-                                    }
-                                }
-                                .padding()
-                            }
-                        }
-
-                        Group {
-                            VStack(alignment: .leading, spacing: 8) {
-
-                                NewArtistSectionHeader(tap: {
-                                    print("tap")
-                                })
-                                .padding()
-
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack {
-                                        ForEach($artists) { artist in
-                                            ArtistCardView(artist: artist)
-                                        }
-                                    }
-                                    .padding(.horizontal)
-                                }
-
-                                Spacer()
-                                    .frame(maxWidth: .infinity)
-                            }
-                        }
-                        .background(Color.secondary.opacity(0.1))
-
-
-                        Group {
-                            Color.clear
-                        }
-                        .frame(height: 500)
-                    }
-                }
-                .coordinateSpace(name: "scroll")
-            }
+//            VStack(spacing: 0) {
+//                HomeSearchbarView(searchText: $searchText)
+//                    .padding()
+//
+//                ScrollView(.vertical, showsIndicators: false) {
+//
+//                    ToolbarHiddenCheckView()
+//
+//                    LazyVStack(alignment: .leading, spacing: 24) {
+//
+//                        HeaderCarouselView(events: $events)
+//
+//                        Group {
+//                            SectionHeader(title: "注目のアートイベント", tap: {
+//                                print("やじるじタップ！")
+//                            })
+//
+//                            ScrollView(.horizontal, showsIndicators: false) {
+//                                LazyHStack(spacing: 16) {
+//                                    ForEach($events) { event in
+//                                        Button {
+//                                            print(event.title)
+//                                        } label: {
+//                                            EventCardView(event: event)
+//                                        }
+//                                        .foregroundStyle(.primary)
+//                                    }
+//                                }
+//                                .padding()
+//                            }
+//                        }
+//
+//                        Group {
+//                            SectionHeader(title: "あなたにおすすめの作品", tap: {
+//                                print("やじるじタップ！")
+//                            })
+//
+//                            ScrollView(.horizontal, showsIndicators: false) {
+//                                LazyHStack(spacing: 16) {
+//                                    ForEach($events) { $event in
+//                                        Button {
+//                                            print(event.title)
+//                                        } label: {
+//                                            WorkCardView(
+//                                                work: .init(
+//                                                    title: "Life is Beautiful",
+//                                                    artistName: "須田 日菜子",
+//                                                    price: "¥88,000",
+//                                                    eventTitle: "須田日菜子「からだと構図」",
+//                                                    badgeText: "限定販売",
+//                                                    imageURLStr: "https://picsum.photos/600/400",
+//                                                    isBookmarked: false
+//                                                ),
+//                                                onToggleBookmark: {}
+//                                            )
+//                                        }
+//                                        .foregroundStyle(.primary)
+//                                    }
+//                                }
+//                                .padding()
+//                            }
+//                        }
+//
+//                        Group {
+//                            VStack(alignment: .leading, spacing: 8) {
+//
+//                                NewArtistSectionHeader(tap: {
+//                                    print("tap")
+//                                })
+//                                .padding()
+//
+//                                ScrollView(.horizontal, showsIndicators: false) {
+//                                    HStack {
+//                                        ForEach($artists) { artist in
+//                                            ArtistCardView(artist: artist)
+//                                        }
+//                                    }
+//                                    .padding(.horizontal)
+//                                }
+//
+//                                Spacer()
+//                                    .frame(maxWidth: .infinity)
+//                            }
+//                        }
+//                        .background(Color.secondary.opacity(0.1))
+//
+//
+//                        Group {
+//                            Color.clear
+//                        }
+//                        .frame(height: 500)
+//                    }
+//                }
+//                .coordinateSpace(name: "scroll")
+//            }
         }
     }
 }

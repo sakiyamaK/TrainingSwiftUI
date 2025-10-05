@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B637294B2E83B78E00D6F485 /* TrainingNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = B637294A2E83B78E00D6F485 /* TrainingNavigation */; };
+		B63A46852E920B3500357D09 /* TrainingTCA in Frameworks */ = {isa = PBXBuildFile; productRef = B63A46842E920B3500357D09 /* TrainingTCA */; };
 		B6444AFD2E84FB6800AFF705 /* CopyArtSticker in Frameworks */ = {isa = PBXBuildFile; productRef = B6444AFC2E84FB6800AFF705 /* CopyArtSticker */; };
 		B6444AFF2E84FB6800AFF705 /* TrainingBasic in Frameworks */ = {isa = PBXBuildFile; productRef = B6444AFE2E84FB6800AFF705 /* TrainingBasic */; };
 		B6444B012E84FB6800AFF705 /* WWDC in Frameworks */ = {isa = PBXBuildFile; productRef = B6444B002E84FB6800AFF705 /* WWDC */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		B61744462E366E300036DF72 /* TrainingSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainingSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B637294C2E83B7A800D6F485 /* TrainingNavigation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingNavigation; sourceTree = "<group>"; };
+		B63A46862E920B4D00357D09 /* TrainingTCA */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingTCA; sourceTree = "<group>"; };
 		B690D4392E76E026003C9FCD /* TrainingButton */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingButton; sourceTree = "<group>"; };
 		B690D43A2E76E026003C9FCD /* Util */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Util; sourceTree = "<group>"; };
 		B690D46B2E76EC0E003C9FCD /* TrainingBasic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TrainingBasic; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 				B6444B012E84FB6800AFF705 /* WWDC in Frameworks */,
 				B6444AFD2E84FB6800AFF705 /* CopyArtSticker in Frameworks */,
 				B6E4BC652E3F00C600FE5424 /* Util in Frameworks */,
+				B63A46852E920B3500357D09 /* TrainingTCA in Frameworks */,
 				B6E4BC622E3EFFFF00FE5424 /* TrainingButton in Frameworks */,
 				B6444AFF2E84FB6800AFF705 /* TrainingBasic in Frameworks */,
 			);
@@ -53,6 +56,7 @@
 		B617443D2E366E300036DF72 = {
 			isa = PBXGroup;
 			children = (
+				B63A46862E920B4D00357D09 /* TrainingTCA */,
 				B637294C2E83B7A800D6F485 /* TrainingNavigation */,
 				B6D4F5B72E7F4F5C00071ACF /* WWDC */,
 				B690D46C2E77D3E5003C9FCD /* CopyArtSticker */,
@@ -106,6 +110,7 @@
 				B6444AFC2E84FB6800AFF705 /* CopyArtSticker */,
 				B6444AFE2E84FB6800AFF705 /* TrainingBasic */,
 				B6444B002E84FB6800AFF705 /* WWDC */,
+				B63A46842E920B3500357D09 /* TrainingTCA */,
 			);
 			productName = TrainingSwiftUI;
 			productReference = B61744462E366E300036DF72 /* TrainingSwiftUI.app */;
@@ -383,6 +388,10 @@
 		B637294A2E83B78E00D6F485 /* TrainingNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TrainingNavigation;
+		};
+		B63A46842E920B3500357D09 /* TrainingTCA */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TrainingTCA;
 		};
 		B6444AFC2E84FB6800AFF705 /* CopyArtSticker */ = {
 			isa = XCSwiftPackageProductDependency;
