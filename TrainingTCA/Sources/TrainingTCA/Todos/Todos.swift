@@ -142,7 +142,7 @@ struct Todos {
     }
 }
 
-struct AppView: View {
+struct TodosView: View {
     @Bindable var store: StoreOf<Todos>
 
     var body: some View {
@@ -206,7 +206,7 @@ extension IdentifiedArrayOf<Todo.State> {
 }
 
 #Preview {
-    AppView(
+    TodosView(
         store: Store(initialState: Todos.State(todos: .mock)) {
             Todos()
         }

@@ -7,12 +7,13 @@
 
 import SwiftUI
 import TrainingBasic
+import TrainingTCA
 
 @main
 struct TrainingSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            TrainingBasic()
+            TrainingTCAView()
         }
     }
 }
