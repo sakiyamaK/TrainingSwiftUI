@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ArtistCardView: View {
+
     @Binding var artist: Artist
 
     var onTapRegister: () -> Void = { }
@@ -16,25 +17,13 @@ struct ArtistCardView: View {
         VStack(spacing: 16) {
             VStack(spacing: 8) {
 
-                ZStack(alignment: .bottomTrailing) {
-                    let size = (width: 120.0, height: 120.0)
-                    AsyncImage(
-                        url: artist.imageURL
-                    ) { response in
-                        if let image = response.image {
-                            image.resizable()
-                                .frame(width: size.width, height: size.height)
-
-                        } else {
-                            Color.gray
-                                .frame(width: size.width, height: size.height)
-                        }
-                    }
-                    .clipShape(Circle())
-
-                    Circle().fill(Color.black)
-                        .frame(width: size.width/4)
-                }
+                ArtistIconImage(
+                    artist: $artist,
+                    size: .init(
+                        width: 120,
+                        height: 120
+                    )
+                )
 
                 Text(artist.name)
             }
@@ -42,9 +31,16 @@ struct ArtistCardView: View {
             Button(artist.isFollowed ? "フォロー中" :"フォロー") {
                 onTapRegister()
             }
-            .buttonStyle(BorderedButtonStyle(color: .secondary, lineWidth: 1))
-            .foregroundStyle(.primary)
-            .disabled(false)
+            .buttonStyle(
+                BorderedButtonStyle(
+                    foregroundColor: true ? Color.white : .primary,
+                    strokeColor: .secondary,
+                    fillColor: true ? .secondary : .clear,
+                    disableForegroudColor: .white,
+                    disableColor: .gray,
+                    lineWidth: 1
+                )
+            )
 
             HStack(spacing: 0) {
                 ForEach(artist.works.prefix(3)) { work in
@@ -69,32 +65,6 @@ struct ArtistCardView: View {
         }
         .padding(16)
         .background(.white)
-    }
-}
-
-struct BorderedButtonStyle: ButtonStyle {
-
-    // @EnvironmentプロパティラッパーでisEnabledの状態を取得
-    @Environment(\.isEnabled) private var isEnabled: Bool
-
-    var color: Color
-    var lineWidth: CGFloat
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.init(top: 8, leading: 16, bottom: 8, trailing: 16))
-            .foregroundColor(isEnabled ? nil : .gray)
-            .overlay {
-                if isEnabled {
-                    Capsule()
-                        .stroke(color, lineWidth: lineWidth)
-                } else {
-                    Capsule()
-                        .fill(color)
-                }
-            }
-            .opacity(configuration.isPressed ? 0.7 : 1.0)
-
     }
 }
 

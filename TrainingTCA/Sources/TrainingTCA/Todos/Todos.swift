@@ -158,8 +158,17 @@ struct TodosView: View {
 
                 List {
                     /*
-                     store.scopeで分割した子のstoreを作り出す
+                     store.scopeで分割した子のstoreの配列を作り出す
                      stateとactionで子のstoreのパラメータを指定する
+
+                     sateはKeyPath<State, IdentifiedArray<ElementID, ElementState>>型で
+                     Reducer>State内でcomputed property計算されるIdentifiedArrayOf<Todo.State>の配列
+                     それをKeyPathで指定する
+
+                     actionはCaseKeyPath<Action, IdentifiedAction<ElementID, ElementAction>>型で
+                     Reducer>Action内のcaseのひとつ
+                     それをCaseKeyPathで指定する
+
                      */
                     ForEach(store.scope(state: \.filteredTodos, action: \.todos)) { store in
                         TodoView(store: store)

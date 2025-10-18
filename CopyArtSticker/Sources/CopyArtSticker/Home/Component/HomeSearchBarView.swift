@@ -1,5 +1,5 @@
 //
-//  HomeSearchbarView.swift
+//  HomeSearchBarView.swift
 //  CopyArtSticker
 //
 //  Created by sakiyamaK on 2025/09/15.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeSearchbarView: View {
+struct HomeSearchBarView: View {
     @Binding var searchText: String
 
     var body: some View {
@@ -20,8 +20,7 @@ struct HomeSearchbarView: View {
                 TextField("アーティスト、イベントなど", text: $searchText)
             }
             .padding(8)
-            .background(Color(.systemGray5))
-            .cornerRadius(10)
+            .background(Color(.systemGray5), in: Capsule())
 
             Group {
                 // ボタン1
@@ -38,3 +37,4 @@ struct HomeSearchbarView: View {
         }
     }
 }
+
