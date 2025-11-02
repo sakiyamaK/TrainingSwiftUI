@@ -7,11 +7,15 @@
 
 import SwiftUI
 
-struct CustomLayout: View {
+public struct CustomLayout: View {
 
     @Binding var pets: [Pet]
 
-    var body: some View {
+    public init(pets: Binding<[Pet]>) {
+        self._pets = pets
+    }
+
+    public var body: some View {
         VStack(spacing: 16) {
             Profile(pets: $pets)            
             Leaderboard(pets: $pets)

@@ -6,6 +6,7 @@
 //
 import SwiftUI
 
+nonisolated
 struct Rank: LayoutValueKey {
     static let defaultValue: Int = 1
 }

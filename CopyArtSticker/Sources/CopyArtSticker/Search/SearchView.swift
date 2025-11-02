@@ -5,6 +5,25 @@
 //  Created by sakiyamaK on 2025/10/12.
 //
 
+
+@MainActor
+final class HogeInteractor {
+    private var caches: [IndexPath: CGSize] = [:]
+
+    init() {
+    }
+}
+
+@MainActor
+final class FavoriteWorksPresenter2 {
+
+    var hogeInteractor: HogeInteractor
+
+    init(hogeInteractor: HogeInteractor = HogeInteractor()) {
+        self.hogeInteractor = hogeInteractor
+    }
+}
+
 import SwiftUI
 
 enum SearchTabType: Int, TabType {

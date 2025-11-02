@@ -6,7 +6,10 @@
 //
 
 import SwiftUI
-
+/*
+ nonisolatedなLayoutのsizeThatFitsで使うから
+ */
+nonisolated
 extension LayoutSubviews {
 
     var maxSize: CGSize {

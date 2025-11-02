@@ -66,6 +66,7 @@ struct MyRadialLayout: Layout {
     }
 }
 
+nonisolated
 private extension [Int] {
     var offset: Double {
 

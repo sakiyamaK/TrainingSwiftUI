@@ -22,7 +22,8 @@ let package = Package(
             name: "TrainingBasic",
             dependencies: [
                 .product(name: "Util", package: "Util")
-            ]
+            ],
+            swiftSettings: [.defaultIsolation(MainActor.self)],
         ),
     ]
 )

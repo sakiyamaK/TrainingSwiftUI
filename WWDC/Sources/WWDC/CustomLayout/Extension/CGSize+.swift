@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension CGSize {
-    var proposedViewSize: ProposedViewSize {
+    nonisolated var proposedViewSize: ProposedViewSize {
         .init(width: self.width, height: self.height)
     }
 

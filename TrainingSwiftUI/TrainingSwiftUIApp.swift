@@ -8,12 +8,13 @@
 import SwiftUI
 import TrainingBasic
 import TrainingTCA
+import WWDC
 
 @main
 struct TrainingSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            TrainingTCAView()
+            CustomLayout(pets: .constant(Pet.exampleData))
         }
     }
 }
